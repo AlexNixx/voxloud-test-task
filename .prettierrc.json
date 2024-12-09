@@ -7,5 +7,6 @@
   "bracketSameLine": true,
   "singleAttributePerLine": true,
   "embeddedLanguageFormatting": "off",
-  "printWidth": 120
+  "printWidth": 120,
+  "arrowParens": "avoid"
 }
