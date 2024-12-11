@@ -103,15 +103,6 @@ export default [
           ignoreRestSiblings: true,
         },
       ],
-
-      'arrow-parens': [
-        'error',
-        'as-needed',
-        {
-          requireForBlockBody: true,
-        },
-      ],
-
       '@angular-eslint/component-class-suffix': [
         'error',
         {
