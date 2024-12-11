@@ -1,4 +1,3 @@
-// TODO naming
 export interface CurrentWeatherResponse {
   coord: {
     lon: number;
