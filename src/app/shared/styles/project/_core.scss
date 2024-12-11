@@ -1,0 +1,84 @@
+.voxloud-bootstrap {
+  *,
+  *:before,
+  *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  a,
+  a:focus,
+  a:active {
+    text-decoration: none;
+    outline: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $color-primary-a35;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: $color-primary-a35;
+  }
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: $color-primary-a70;
+  color: $color-primary-a5;
+
+  --mdc-filled-text-field-container-color: #{$color-primary-a60};
+  --mdc-filled-text-field-label-text-color: #{$color-primary-a20};
+  --mdc-filled-text-field-hover-label-text: #{$color-primary-a20};
+  --mdc-filled-text-field-focus-label-text-color: #{$color-primary-a20};
+  --mdc-filled-text-field-input-text-color: #{$color-primary-a10};
+  --mdc-filled-text-field-caret-color: #{$color-primary-a10};
+  --mdc-filled-text-field-hover-label-text-color: #{$color-primary-a10};
+
+  --mat-option-label-text-color: #{$color-primary-a10};
+  --mat-option-selected-state-label-text-color: #{$color-primary-a50};
+  --mat-option-selected-state-layer-color: #{$color-primary-a60};
+
+  --mdc-fab-container-color: #{$color-primary-a20};
+}
