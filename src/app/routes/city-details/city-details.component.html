@@ -1,0 +1,33 @@
+@if (error()) {
+  <h3 class="center">
+    {{ error() }}
+  </h3>
+}
+@else if (loading()) {
+  <mat-spinner class="center loader" strokeWidth="8" diameter="50"></mat-spinner>
+}
+@else {
+  <header class="header">
+    <button
+      mat-fab
+      extended
+      class="header-button"
+      (click)="toggleCityHistory()"
+      [disabled]="!currentCity()"
+      aria-label="city toggle in history"
+    >
+      <mat-icon>{{ isSaved() ? 'delete' : 'favorite' }}</mat-icon>
+      {{ isSaved() ? 'Remove' : 'Save' }}
+    </button>
+    <div class="header-info">
+      <h2>Forecast in {{ weather()?.current?.name }}, {{ weather()?.current?.sys?.country }}</h2>
+      <h4>{{ currentDate | formatDateTime:'full' }}</h4>
+    </div>
+  </header>
+
+  <div class="content">
+    <current-weather [weather]="weather()?.current!" ></current-weather>
+
+    <forecast [forecast]="weather()?.forecast!"></forecast>
+  </div>
+}

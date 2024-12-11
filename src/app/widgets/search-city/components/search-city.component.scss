@@ -1,0 +1,13 @@
+@use '../../../shared/styles/styles' as vars;
+
+.search-field {
+  width: 240px;
+
+  @include vars.mq('sm') {
+    width: 320px;
+  }
+
+  @include vars.mq('md') {
+    width: 380px;
+  }
+}

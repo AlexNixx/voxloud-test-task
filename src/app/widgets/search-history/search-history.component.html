@@ -1,0 +1,16 @@
+@if (cities().length) {
+  <mat-chip-set aria-label="City history selection">
+    @for (city of cities(); track $index) {
+      <mat-chip-row
+        (removed)="remove(city)"
+        (click)="selected.emit(city)"
+        (keydown)="$event.preventDefault()"
+      >
+        {{ city }}
+        <button matChipRemove [attr.aria-label]="'remove ' + city">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+    }
+  </mat-chip-set>
+}

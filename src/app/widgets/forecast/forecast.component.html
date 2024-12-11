@@ -1,0 +1,15 @@
+<div class="forecast" @listAnimation>
+  @for (forecast of forecast()?.list; track $index) {
+    <div class="forecast-item">
+      <span>{{ forecast?.dt! |  formatDateTime:'shortDate' }}</span>
+      <span>{{ forecast?.dt! |  formatDateTime:'time' }}</span>
+      <img
+        [ngSrc]='getIconUrl(forecast?.weather?.[0]?.icon ?? "01d")'
+        [attr.alt]="forecast.weather[0].description"
+        height="80"
+        width="80"
+      />
+      <h3>{{ forecast?.main?.temp | number: '1.0-0' }}°C</h3>
+    </div>
+  }
+</div>

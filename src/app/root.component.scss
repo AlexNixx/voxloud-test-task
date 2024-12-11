@@ -1,0 +1,27 @@
+@use './shared/styles/styles' as vars;
+
+:host {
+  display: block;
+  height: 100%;
+  padding: 12px;
+
+  @include vars.mq('sm') {
+    padding: 24px;
+  }
+
+  @include vars.mq('lg') {
+    padding: 72px;
+  }
+
+  footer {
+    width: 100%;
+    padding: 16px;
+    text-align: center;
+    color: vars.$color-primary-a10;
+
+    a {
+      font-size: 18px;
+      color: vars.$color-primary-a40;
+    }
+  }
+}

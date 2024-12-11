@@ -2,6 +2,7 @@ import { enableProdMode, isDevMode, provideExperimentalZonelessChangeDetection }
 import { bootstrapApplication, enableDebugTools } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
 
 import { environment } from './environments/environment';
 
@@ -15,6 +16,7 @@ if (environment.production) {
 
 bootstrapApplication(RootComponent, {
   providers: [
+    provideHttpClient(),
     provideExperimentalZonelessChangeDetection(),
     provideRouter(routes),
     provideAnimationsAsync(),

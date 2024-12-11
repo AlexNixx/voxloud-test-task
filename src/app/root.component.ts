@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './root.component.html',
+  template: `
+    <router-outlet class="hidden" aria-hidden="true" />
+    <footer><h4>Designed and Coded by <a href="https://github.com/AlexNixx">Alex</a></h4></footer>
+  `,
+  styleUrl: './root.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
+  imports: [RouterOutlet],
 })
-export class RootComponent {
-  title = 'voxloud';
-}
+export class RootComponent {}

@@ -1,0 +1,23 @@
+<mat-form-field class="search-field">
+  <mat-label> Search for places ... </mat-label>
+
+  <input
+    [formControl]="control"
+    matInput
+    type="text"
+    [matAutocomplete]="auto"
+  />
+
+  @if (loading()) {
+    <mat-spinner matSuffix strokeWidth="2" diameter="26" color="accent"></mat-spinner>
+  }
+
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    (optionSelected)="onCitySelected($event.option.value)"
+  >
+    @for (option of cities$ | async; track $index) {
+      <mat-option [value]="option.name" (keydown)="$event.preventDefault()">{{ option.name }}</mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>
