@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { of, tap, throwError } from 'rxjs';
 
 import { SearchCityResponse } from '../model';
 

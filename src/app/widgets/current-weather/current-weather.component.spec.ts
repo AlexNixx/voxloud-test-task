@@ -8,7 +8,6 @@ import { FormatDateTimePipe } from '../../shared/pipes';
 import { currentWeatherFixtures } from '../../shared/test';
 
 import { CurrentWeatherComponent } from './current-weather.component';
-import { DeepPartial } from '../../shared/model';
 
 describe('CurrentWeatherComponent', () => {
   let component: CurrentWeatherComponent;
