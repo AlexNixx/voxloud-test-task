@@ -12,7 +12,7 @@ export class WeatherApiService {
   private readonly http = inject(HttpClient);
   private readonly env = inject(ENV);
 
-  private readonly baseUrl = 'https://api.openweathermap.org/data/2.5/';
+  private readonly baseUrl = 'https://api.openweathermap.org/data/2.5';
   private readonly key = this.env.thirdParty.openWeatherMapKey;
 
   public getCurrentWeather(city: string): Observable<CurrentWeatherResponse> {
