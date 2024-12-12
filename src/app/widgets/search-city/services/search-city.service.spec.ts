@@ -4,6 +4,7 @@ import { SearchCityResponse } from '../model';
 
 import { SearchCityApiService } from './search-city-api.service';
 import { SearchCityService } from './search-city.service';
+import { of, throwError } from 'rxjs';
 
 describe('SearchCityService', () => {
   let service: SearchCityService;
