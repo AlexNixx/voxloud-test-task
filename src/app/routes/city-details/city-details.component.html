@@ -1,10 +1,10 @@
 @if (error()) {
-  <h3 class="center">
+  <h3 class="center" data-test-id="error">
     {{ error() }}
   </h3>
 }
 @else if (loading()) {
-  <mat-spinner class="center loader" strokeWidth="8" diameter="50"></mat-spinner>
+  <mat-spinner class="center loader" strokeWidth="8" diameter="50" data-test-id="loader"></mat-spinner>
 }
 @else {
   <header class="header">
@@ -15,6 +15,7 @@
       (click)="toggleCityHistory()"
       [disabled]="!currentCity()"
       aria-label="city toggle in history"
+      data-test-id="toggle-city"
     >
       <mat-icon>{{ isSaved() ? 'delete' : 'favorite' }}</mat-icon>
       {{ isSaved() ? 'Remove' : 'Save' }}

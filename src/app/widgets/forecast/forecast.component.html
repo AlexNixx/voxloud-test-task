@@ -1,15 +1,16 @@
-<div class="forecast" @listAnimation>
+<div class="forecast" @listAnimation data-test-id="forecast">
   @for (forecast of forecast()?.list; track $index) {
-    <div class="forecast-item">
-      <span>{{ forecast?.dt! |  formatDateTime:'shortDate' }}</span>
-      <span>{{ forecast?.dt! |  formatDateTime:'time' }}</span>
+    <div class="forecast-item" data-test-id="forecast-item">
+      <span data-test-id="short-date">{{ forecast?.dt! |  formatDateTime:'shortDate' }}</span>
+      <span data-test-id="time">{{ forecast?.dt! |  formatDateTime:'time' }}</span>
       <img
         [ngSrc]='getIconUrl(forecast?.weather?.[0]?.icon ?? "01d")'
         [attr.alt]="forecast.weather[0].description"
         height="80"
         width="80"
+        data-test-id="icon"
       />
-      <h3>{{ forecast?.main?.temp | number: '1.0-0' }}°C</h3>
+      <h3 data-test-id="temp">{{ forecast?.main?.temp | number: '1.0-0' }}°C</h3>
     </div>
   }
 </div>

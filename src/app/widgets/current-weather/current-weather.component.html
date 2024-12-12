@@ -1,9 +1,9 @@
 <div class="widgets">
   <div class="widgets-item temperature">
     <div class="temperature-details">
-      <h1>{{ weather()?.main?.temp | number: '1.0-0' }}°C</h1>
+      <h1 data-test-id="temp">{{ weather()?.main?.temp | number: '1.0-0' }}°C</h1>
       <div class="temperature-details-subtitle">
-        <span>{{ weather()?.weather?.[0]?.description | titlecase }}</span>
+        <span data-test-id="description">{{ weather()?.weather?.[0]?.description | titlecase }}</span>
         <span>Feels like {{ weather()?.main?.feels_like | number: '1.0-0' }}°C</span>
       </div>
     </div>
@@ -28,28 +28,28 @@
     <li class="list-item">
       <div class="list-item-element">Visibility</div>
       <div class="list-item-element">
-        <span>{{ weather()?.visibility! / 1000 }} km</span>
+        <span data-test-id="visibility">{{ weather()?.visibility! / 1000 }} km</span>
         <mat-icon class="list-item-element-icon">visibility_off</mat-icon>
       </div>
     </li>
     <li class="list-item">
       <div class="list-item-element">Wind</div>
       <div class="list-item-element">
-        <span>{{ weather()?.wind?.speed }} m/s</span>
+        <span data-test-id="wind">{{ weather()?.wind?.speed }} m/s</span>
         <mat-icon class="list-item-element-icon">air</mat-icon>
       </div>
     </li>
     <li class="list-item">
       <div class="list-item-element">Humidity</div>
       <div class="list-item-element">
-        <span>{{ weather()?.main?.humidity }} %</span>
+        <span data-test-id="humidity">{{ weather()?.main?.humidity }} %</span>
         <mat-icon class="list-item-element-icon">water_drop</mat-icon>
       </div>
     </li>
     <li class="list-item">
       <div class="list-item-element">Cloudiness</div>
       <div class="list-item-element">
-        <span>{{ weather()?.clouds?.all }} %</span>
+        <span data-test-id="cloudiness">{{ weather()?.clouds?.all }} %</span>
         <mat-icon class="list-item-element-icon">cloud</mat-icon>
       </div>
     </li>
@@ -59,13 +59,13 @@
     <div class="sun-element">
       <mat-icon class="sun-element-icon">sunny</mat-icon>
       <h4>Sunrise</h4>
-      <h3>{{ weather()?.sys?.sunrise! | formatDateTime:'time' }}</h3>
+      <h3 data-test-id="sunrise">{{ weather()?.sys?.sunrise! | formatDateTime:'time' }}</h3>
     </div>
 
     <div class="sun-element">
       <mat-icon class="sun-element-icon">mode_night</mat-icon>
       <h4>Sunset</h4>
-      <h3>{{ weather()?.sys?.sunset! | formatDateTime:'time' }}</h3>
+      <h3 data-test-id="sunset">{{ weather()?.sys?.sunset! | formatDateTime:'time' }}</h3>
     </div>
   </div>
 </div>

@@ -2,6 +2,7 @@
   <mat-chip-set aria-label="City history selection">
     @for (city of cities(); track $index) {
       <mat-chip-row
+        data-test-id="chip"
         (removed)="remove(city)"
         (click)="selected.emit(city)"
         (keydown)="$event.preventDefault()"
