@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
-import { catchError, map, of, switchMap, tap } from 'rxjs';
+import { finalize, map, switchMap, tap } from 'rxjs';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { TitleCasePipe } from '@angular/common';
@@ -10,6 +10,8 @@ import { ForecastComponent, CurrentWeatherComponent } from '../../widgets';
 import { HistoryService, WeatherService } from '../../shared/services';
 import { FormatDateTimePipe } from '../../shared/pipes';
 import { Weather } from '../../shared/model';
+
+const MIN_CITY_LENGTH = 3;
 
 @Component({
   selector: 'app-city-details',
@@ -52,22 +54,21 @@ export class CityDetailsComponent implements OnInit {
     this.route.paramMap
       .pipe(
         map(params => params.get('city')),
-        tap(() => {
-          this.loading.set(true);
-          this.error.set(null);
-        }),
+        tap(() => this.loading.set(true)),
         switchMap(city => {
-          if (!city || city.length < 3) {
+          if (!city || city.length < MIN_CITY_LENGTH) {
             return this.router.navigate(['/dashboard']);
           }
 
           return this.service.getWeather(city).pipe(
             tap({
-              next: weather => this.weather.set(weather),
-              error: error => this.error.set(error),
+              next: weather => {
+                this.weather.set(weather);
+                this.error.set(null);
+              },
+              error: err => this.error.set(err),
             }),
-            tap(() => this.loading.set(false)),
-            catchError(() => of(null))
+            finalize(() => this.loading.set(false))
           );
         })
       )

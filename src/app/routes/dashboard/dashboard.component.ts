@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
 import { SearchCityComponent, SearchHistoryComponent } from '../../widgets';
-import { HistoryService } from '../../shared/services';
 
 @Component({
   selector: 'dashboard',
@@ -13,7 +12,6 @@ import { HistoryService } from '../../shared/services';
   imports: [RouterOutlet, SearchCityComponent, SearchHistoryComponent],
 })
 export class DashboardComponent {
-  private readonly history = inject(HistoryService);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
 

@@ -39,7 +39,7 @@ export class SearchCityComponent {
       filter(value => value.length >= 3),
       debounceTime(300),
       tap(() => this.loading.set(true)),
-      switchMap(keyword => (keyword ? this.service.getCities(keyword).pipe(catchError(() => of([]))) : of([]))),
+      switchMap(keyword => this.service.getCities(keyword).pipe(catchError(() => of([])))),
       tap(() => this.loading.set(false))
     )
   );
