@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
-import { finalize, map, switchMap, tap } from 'rxjs';
+import { finalize, map, switchMap, takeUntil, tap } from 'rxjs';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { TitleCasePipe } from '@angular/common';
@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ForecastComponent, CurrentWeatherComponent } from '../../widgets';
 import { HistoryService, WeatherService } from '../../shared/services';
 import { FormatDateTimePipe } from '../../shared/pipes';
+import { DestroyService } from '../../shared/lib';
 import { Weather } from '../../shared/model';
 
 const MIN_CITY_LENGTH = 3;
@@ -28,10 +29,12 @@ const MIN_CITY_LENGTH = 3;
     FormatDateTimePipe,
     MatIconModule,
   ],
+  providers: [DestroyService],
 })
 export class CityDetailsComponent implements OnInit {
   private readonly history = inject(HistoryService);
   private readonly service = inject(WeatherService);
+  private readonly destroy$ = inject(DestroyService);
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
 
@@ -70,7 +73,8 @@ export class CityDetailsComponent implements OnInit {
             }),
             finalize(() => this.loading.set(false))
           );
-        })
+        }),
+        takeUntil(this.destroy$)
       )
       .subscribe();
   }
